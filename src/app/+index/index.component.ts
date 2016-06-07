@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router-deprecated'
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list'
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button'
 import { MD_ICON_DIRECTIVES, MdIconRegistry } from '@angular2-material/icon'
@@ -16,7 +17,10 @@ import { UserService } from '../user.service'
 export class IndexComponent implements OnInit {
   users: User[]
 
-  constructor(private _service: UserService) {}
+  constructor(
+    private _router: Router,
+    private _service: UserService
+  ) {}
 
   ngOnInit() {
     this._service
@@ -24,6 +28,10 @@ export class IndexComponent implements OnInit {
       .subscribe((users) => {
         this.users = users
       })
+  }
+
+  navigate(linkParams: any[]) {
+    this._router.navigate(linkParams)
   }
 
 }

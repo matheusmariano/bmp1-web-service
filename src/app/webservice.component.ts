@@ -13,7 +13,16 @@ import { NewComponent } from './+new';
   providers: [ROUTER_PROVIDERS]
 })
 @RouteConfig([
-  {path: '/', component: IndexComponent},
-  {path: '/adicionar', component: NewComponent}
+  {
+    name: 'Index',
+    path: '/',
+    component: IndexComponent,
+    useAsDefault: true
+  },
+  {
+    name: 'New',
+    path: '/adicionar',
+    component: NewComponent
+  }
 ])
 export class WebserviceAppComponent {}
