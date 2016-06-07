@@ -1,0 +1,9 @@
+.text-muted {
+  color: gray;
+}
+
+.float-button {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}

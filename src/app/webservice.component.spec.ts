@@ -14,9 +14,4 @@ describe('App: Webservice', () => {
       inject([WebserviceAppComponent], (app: WebserviceAppComponent) => {
     expect(app).toBeTruthy();
   }));
-
-  it('should have as title \'webservice works!\'',
-      inject([WebserviceAppComponent], (app: WebserviceAppComponent) => {
-    expect(app.title).toEqual('webservice works!');
-  }));
 });
