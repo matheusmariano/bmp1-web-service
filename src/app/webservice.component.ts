@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IndexComponent } from './+index';
 import { RouteConfig , ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
+import { NewComponent } from './+new';
 
 @Component({
   moduleId: module.id,
@@ -12,6 +13,7 @@ import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
   providers: [ROUTER_PROVIDERS]
 })
 @RouteConfig([
-  {path: '/', component: IndexComponent}
+  {path: '/', component: IndexComponent},
+  {path: '/adicionar', component: NewComponent}
 ])
 export class WebserviceAppComponent {}
