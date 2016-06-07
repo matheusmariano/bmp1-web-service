@@ -1,7 +1,7 @@
 <md-list>
-  <md-list-item>
-    <h3 md-line>User name</h3>
-    <p md-line class="text-muted">Email</p>
+  <md-list-item *ngFor="let user of users">
+    <h3 md-line>{{ user.name }}</h3>
+    <p md-line class="text-muted">{{ user.email }}</p>
     <button md-icon-button>
       <md-icon>info</md-icon>
     </button>
