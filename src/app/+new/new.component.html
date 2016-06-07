@@ -1,13 +1,13 @@
-<form>
-  <md-input placeholder="Nome"></md-input>
-  <md-input placeholder="Email"></md-input>
+<form [ngFormModel]="form">
+  <md-input placeholder="Nome" ngControl="name" [dividerColor]="(! form.controls.name.valid && form.controls.name.dirty) ? 'warn' : 'primary'"></md-input>
+  <md-input placeholder="Email" ngControl="email" [dividerColor]="(! form.controls.email.valid && form.controls.email.dirty) ? 'warn' : 'primary'"></md-input>
   <md-radio-group>
     <md-radio-button value="female">Feminino</md-radio-button>
     <md-radio-button value="male">Masculino</md-radio-button>
     <!-- <md-radio-button value="undefined">Não informado</md-radio-button> -->
   </md-radio-group>
-  <md-input placeholder="Nascimento">
+  <md-input placeholder="Nascimento" ngControl="birthday" [dividerColor]="(! form.controls.birthday.valid && form.controls.birthday.dirty) ? 'warn' : 'primary'">
     <md-hint align="end">dd/mm/aaaa</md-hint>
   </md-input>
-  <button md-button>ADICIONAR</button>
+  <button md-button [disabled]="! form.valid">ADICIONAR</button>
 </form>
