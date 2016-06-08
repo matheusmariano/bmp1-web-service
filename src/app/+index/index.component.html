@@ -1,5 +1,5 @@
 <md-list>
-  <md-list-item *ngFor="let user of users">
+  <md-list-item *ngFor="let user of users" (click)="navigate(['Show', { id: user.id }])">
     <h3 md-line>{{ user.name }}</h3>
     <p md-line class="text-muted">{{ user.email }}</p>
     <button md-icon-button>

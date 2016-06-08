@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouteConfig , ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card'
-import { IndexComponent } from './+index';
 import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
+import { IndexComponent } from './+index';
 import { NewComponent } from './+new';
+import { ShowComponent } from './+show';
 
 @Component({
   moduleId: module.id,
@@ -24,6 +25,11 @@ import { NewComponent } from './+new';
     name: 'New',
     path: '/adicionar',
     component: NewComponent
+  },
+  {
+    name: 'Show',
+    path: '/:id',
+    component: ShowComponent
   }
 ])
 export class WebserviceAppComponent {}
