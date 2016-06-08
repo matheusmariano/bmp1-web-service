@@ -9,7 +9,7 @@ export abstract class HttpService {
   get(
     action: string,
     body = ''
-  ) {
+  ): Observable<any> {
     let url: string = Config.apiUrl + action
 
     return this._http
@@ -37,7 +37,26 @@ export abstract class HttpService {
       .catch(this._handleError)
   }
 
-  delete(action: string) {
+  patch(
+    action: string,
+    body = '',
+    headers: { [key: string]: string } = {}
+  ): Observable<any> {
+    let url: string = Config.apiUrl + action
+
+    headers['Content-Type'] = 'application/json'
+
+    let options = new RequestOptions({
+      headers: new Headers(headers),
+    })
+
+    return this._http
+      .patch(url, body, options)
+      .map(this._extract)
+      .catch(this._handleError)
+  }
+
+  delete(action: string): Observable<any> {
     let url: string = Config.apiUrl + action
 
     return this._http

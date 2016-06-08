@@ -10,8 +10,8 @@ export class EmailService extends HttpService implements UniqueService {
     super(http)
   }
 
-  getUnique(email: string) {
-    let body: string = JSON.stringify({ email })
+  getUnique(email: string, ignoreId?: string | number) {
+    let body: string = JSON.stringify({ email, ignore_id: ignoreId })
     return this.post('/users/email', body)
   }
 

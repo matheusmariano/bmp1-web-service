@@ -6,13 +6,13 @@ export interface Unique {
 }
 
 export interface UniqueService {
-  getUnique(value: any): Observable<Unique>
+  getUnique(value: any, ignoreId?: string | number): Observable<Unique>
 }
 
-export function validateUnique(service: UniqueService) {
+export function validateUnique(service: UniqueService, ignoreId?: string | number) {
   return (control: Control): Promise<any> => {
     return new Promise((resolve) => {
-      service.getUnique(control.value)
+      service.getUnique(control.value, ignoreId)
         .subscribe((unique) => {
           resolve(unique.available ? null : {
             ctUnique: {

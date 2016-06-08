@@ -5,6 +5,7 @@ import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
 import { IndexComponent } from './+index';
 import { NewComponent } from './+new';
 import { ShowComponent } from './+show';
+import { EditComponent } from './+edit';
 import { DeleteComponent } from './+delete';
 
 @Component({
@@ -31,6 +32,11 @@ import { DeleteComponent } from './+delete';
     name: 'Show',
     path: '/:id',
     component: ShowComponent
+  },
+  {
+    name: 'Edit',
+    path: '/:id/editar',
+    component: EditComponent
   },
   {
     name: 'Delete',

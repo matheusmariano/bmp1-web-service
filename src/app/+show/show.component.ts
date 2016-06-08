@@ -53,6 +53,10 @@ export class ShowComponent implements OnInit {
       })
   }
 
+  edit(): void {
+    this._router.navigate(['Edit', { id: this._routeParams.get('id') }])
+  }
+
   delete(): void {
     this._router.navigate(['Delete', { id: this._routeParams.get('id') }])
   }

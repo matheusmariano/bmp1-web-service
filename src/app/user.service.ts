@@ -20,6 +20,12 @@ export class UserService extends HttpService {
     return this.post('/users', body)
   }
 
+  update(user: User) {
+    let body: string = JSON.stringify(user)
+
+    return this.patch('/users/' + user.id, body)
+  }
+
   destroy(id: number | string) {
     let action: string = '/users/' + id
 
