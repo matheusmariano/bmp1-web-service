@@ -1,7 +1,10 @@
 <form [ngFormModel]="form">
-  <p [hidden]="! submit.error">Não foi possível adicionar o usuário. Verifique os dados e tente novamente.</p>
+  <p *ngIf="submit.error">Não foi possível adicionar o usuário. Verifique os dados e tente novamente.</p>
   <md-input placeholder="Nome" ngControl="name" [(ngModel)]="model.name" [dividerColor]="(! form.controls.name.valid && form.controls.name.dirty) ? 'warn' : 'primary'"></md-input>
-  <md-input placeholder="Email" ngControl="email" [(ngModel)]="model.email" [dividerColor]="(! form.controls.email.valid && form.controls.email.dirty) ? 'warn' : 'primary'"></md-input>
+  <md-input placeholder="Email" ngControl="email" [(ngModel)]="model.email" [dividerColor]="(! form.controls.email.valid && form.controls.email.dirty) ? 'warn' : 'primary'">
+    <md-hint align="end" *ngIf="form.controls.email.pending">Verificando...</md-hint>
+    <md-hint align="end" *ngIf="form.controls.email.errors?.ctUnique">Email já registrado</md-hint>
+  </md-input>
   <md-radio-group [(ngModel)]="model.sex">
     <md-radio-button value="female">Feminino</md-radio-button>
     <md-radio-button value="male">Masculino</md-radio-button>

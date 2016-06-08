@@ -7,6 +7,7 @@ import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button'
 import { Validators as NbValidators } from '../shared/validators/validators'
 import { User } from '../user'
 import { UserService } from '../user.service'
+import { EmailService } from '../shared/services/email.service'
 
 @Component({
   moduleId: module.id,
@@ -14,7 +15,7 @@ import { UserService } from '../user.service'
   templateUrl: 'new.component.html',
   styleUrls: ['new.component.css'],
   directives: [MD_INPUT_DIRECTIVES, MD_RADIO_DIRECTIVES, MD_BUTTON_DIRECTIVES],
-  providers: [MdRadioDispatcher, UserService]
+  providers: [MdRadioDispatcher, UserService, EmailService]
 })
 export class NewComponent implements OnInit {
 
@@ -25,7 +26,8 @@ export class NewComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _router: Router,
-    private _service: UserService
+    private _service: UserService,
+    private _emailService: EmailService
   ) {}
 
   ngOnInit() {
@@ -58,7 +60,7 @@ export class NewComponent implements OnInit {
       email: [this.model.email, Validators.compose([
         Validators.required,
         NbValidators.email
-      ])],
+      ]), NbValidators.unique(this._emailService)],
       birthday: [this.model.birthday, Validators.compose([
         NbValidators.date
       ])]
