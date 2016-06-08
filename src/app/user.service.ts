@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core'
-import { Http, Response } from '@angular/http'
+import { Http, Headers, Response, RequestOptions } from '@angular/http'
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/Rx'
+import { User } from './user'
 
 @Injectable()
 export class UserService {
@@ -12,6 +13,25 @@ export class UserService {
   all() {
     return this._http
       .get(`${this._apiUrl}/users`)
+      .map(this._extract)
+      .catch(this._handleError)
+  }
+
+  create(user: User) {
+    let url: string = this._apiUrl + '/users'
+
+    let headers: { [key: string]: string } = {
+      'Content-Type': 'application/json'
+    }
+
+    let options = new RequestOptions({
+      headers: new Headers(headers)
+    })
+
+    let body: string = JSON.stringify(user)
+
+    return this._http
+      .post(url, body, options)
       .map(this._extract)
       .catch(this._handleError)
   }
