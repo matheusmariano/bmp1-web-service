@@ -37,6 +37,15 @@ export abstract class HttpService {
       .catch(this._handleError)
   }
 
+  delete(action: string) {
+    let url: string = Config.apiUrl + action
+
+    return this._http
+      .delete(url)
+      .map(this._extract)
+      .catch(this._handleError)
+  }
+
   private _extract(response: Response) {
     return response.json()
   }

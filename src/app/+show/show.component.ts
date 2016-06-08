@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouteParams } from '@angular/router-deprecated'
+import { Router, RouteParams } from '@angular/router-deprecated'
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button'
 import { User } from '../user'
 import { UserService } from '../user.service'
@@ -17,6 +17,7 @@ export class ShowComponent implements OnInit {
   user: User
 
   constructor(
+    private _router: Router,
     private _routeParams: RouteParams,
     private _service: UserService
   ) {}
@@ -50,6 +51,10 @@ export class ShowComponent implements OnInit {
 
         this.user = user
       })
+  }
+
+  delete(): void {
+    this._router.navigate(['Delete', { id: this._routeParams.get('id') }])
   }
 
 }

@@ -5,6 +5,7 @@ import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
 import { IndexComponent } from './+index';
 import { NewComponent } from './+new';
 import { ShowComponent } from './+show';
+import { DeleteComponent } from './+delete';
 
 @Component({
   moduleId: module.id,
@@ -30,6 +31,11 @@ import { ShowComponent } from './+show';
     name: 'Show',
     path: '/:id',
     component: ShowComponent
+  },
+  {
+    name: 'Delete',
+    path: '/:id/excluir',
+    component: DeleteComponent
   }
 ])
 export class WebserviceAppComponent {}

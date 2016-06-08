@@ -19,4 +19,10 @@ export class UserService extends HttpService {
 
     return this.post('/users', body)
   }
+
+  destroy(id: number | string) {
+    let action: string = '/users/' + id
+
+    return this.delete(action)
+  }
 }
