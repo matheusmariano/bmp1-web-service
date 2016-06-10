@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { RouteConfig , ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
-import { MD_CARD_DIRECTIVES } from '@angular2-material/card'
-import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
+import { Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import { IndexComponent } from './+index';
 import { NewComponent } from './+new';
 import { ShowComponent } from './+show';
@@ -13,7 +11,7 @@ import { DeleteComponent } from './+delete';
   selector: 'webservice-app',
   templateUrl: 'webservice.component.html',
   styleUrls: ['webservice.component.css'],
-  directives: [ROUTER_DIRECTIVES, MD_CARD_DIRECTIVES, MD_TOOLBAR_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES],
   providers: [ROUTER_PROVIDERS]
 })
 @RouteConfig([

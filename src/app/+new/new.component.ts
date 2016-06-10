@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlGroup, FormBuilder, Validators } from '@angular/common'
 import { Router } from '@angular/router-deprecated'
+import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar'
+import { MD_ICON_DIRECTIVES, MdIconRegistry } from '@angular2-material/icon'
+import { MD_CARD_DIRECTIVES } from '@angular2-material/card'
 import { MD_INPUT_DIRECTIVES } from '@angular2-material/input'
 import { MD_RADIO_DIRECTIVES, MdRadioDispatcher } from '@angular2-material/radio'
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button'
@@ -14,8 +17,8 @@ import { EmailService } from '../shared/services/email.service'
   selector: 'app-new',
   templateUrl: 'new.component.html',
   styleUrls: ['new.component.css'],
-  directives: [MD_INPUT_DIRECTIVES, MD_RADIO_DIRECTIVES, MD_BUTTON_DIRECTIVES],
-  providers: [MdRadioDispatcher, UserService, EmailService]
+  directives: [MD_TOOLBAR_DIRECTIVES, MD_ICON_DIRECTIVES, MD_CARD_DIRECTIVES, MD_INPUT_DIRECTIVES, MD_RADIO_DIRECTIVES, MD_BUTTON_DIRECTIVES],
+  providers: [MdIconRegistry, MdRadioDispatcher, UserService, EmailService]
 })
 export class NewComponent implements OnInit {
 
@@ -50,6 +53,11 @@ export class NewComponent implements OnInit {
       }, (error) => {
         this.submit.error = true
       })
+  }
+
+  back(event: Event) {
+    event.preventDefault()
+    this._router.navigate(['Index'])
   }
 
   private _applyValidators(): void {

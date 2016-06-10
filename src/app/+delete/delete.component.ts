@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouteParams } from '@angular/router-deprecated'
+import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar'
+import { MD_ICON_DIRECTIVES, MdIconRegistry } from '@angular2-material/icon'
+import { MD_CARD_DIRECTIVES } from '@angular2-material/card'
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button'
 import { UserService } from '../user.service'
 
@@ -8,8 +11,8 @@ import { UserService } from '../user.service'
   selector: 'app-delete',
   templateUrl: 'delete.component.html',
   styleUrls: ['delete.component.css'],
-  directives: [MD_BUTTON_DIRECTIVES],
-  providers: [UserService]
+  directives: [MD_TOOLBAR_DIRECTIVES, MD_ICON_DIRECTIVES, MD_CARD_DIRECTIVES, MD_BUTTON_DIRECTIVES],
+  providers: [MdIconRegistry, UserService]
 })
 export class DeleteComponent implements OnInit {
 
@@ -32,7 +35,7 @@ export class DeleteComponent implements OnInit {
       })
   }
 
-  cancel() {
+  back() {
     this._router.navigate(['Show', { id: this._routeParams.get('id') }])
   }
 
