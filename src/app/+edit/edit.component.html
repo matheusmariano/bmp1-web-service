@@ -1,16 +1,26 @@
-<form *ngIf="model" [ngFormModel]="form" (ngSubmit)="update()">
-  <md-input placeholder="Nome" ngControl="name" [(ngModel)]="model.name" [dividerColor]="(! form.controls.name.valid && form.controls.name.dirty) ? 'warn' : 'primary'"></md-input>
-  <md-input placeholder="Email" ngControl="email" [(ngModel)]="model.email" [dividerColor]="(! form.controls.email.valid && form.controls.email.dirty) ? 'warn' : 'primary'">
-    <md-hint align="end" *ngIf="form.controls.email.pending">Verificando...</md-hint>
-    <md-hint align="end" *ngIf="form.controls.email.errors?.ctUnique">Email já registrado</md-hint>
-  </md-input>
-  <md-radio-group [(ngModel)]="model.sex">
-    <md-radio-button value="female">Feminino</md-radio-button>
-    <md-radio-button value="male">Masculino</md-radio-button>
-    <!-- <md-radio-button value="undefined">Não informado</md-radio-button> -->
-  </md-radio-group>
-  <md-input placeholder="Nascimento" ngControl="birthday" [(ngModel)]="model.birthday" [dividerColor]="(! form.controls.birthday.valid && form.controls.birthday.dirty) ? 'warn' : 'primary'">
-    <md-hint align="end">dd/mm/aaaa</md-hint>
-  </md-input>
-  <button md-button type="submit" [disabled]="! form.valid">EDITAR</button>
-</form>
+<md-toolbar color="primary">
+  <a class="control">
+    <md-icon (click)="back($event)">arrow_back</md-icon>
+  </a>
+  <span>Editar</span>
+</md-toolbar>
+
+<md-card class="container">
+  <form *ngIf="model" [ngFormModel]="form" (ngSubmit)="update()">
+    <md-input placeholder="Nome" ngControl="name" [(ngModel)]="model.name" [dividerColor]="(! form.controls.name.valid && form.controls.name.dirty) ? 'warn' : 'primary'"></md-input>
+    <md-input placeholder="Email" ngControl="email" [(ngModel)]="model.email" [dividerColor]="(! form.controls.email.valid && form.controls.email.dirty) ? 'warn' : 'primary'">
+      <md-hint align="end" *ngIf="form.controls.email.pending">Verificando...</md-hint>
+      <md-hint align="end" *ngIf="form.controls.email.errors?.ctUnique">Email já registrado</md-hint>
+    </md-input>
+    <md-radio-group [(ngModel)]="model.sex">
+      <md-radio-button value="female">Feminino</md-radio-button>
+      <md-radio-button value="male">Masculino</md-radio-button>
+      <!-- <md-radio-button value="undefined">Não informado</md-radio-button> -->
+    </md-radio-group>
+    <md-input placeholder="Nascimento" ngControl="birthday" [(ngModel)]="model.birthday" [dividerColor]="(! form.controls.birthday.valid && form.controls.birthday.dirty) ? 'warn' : 'primary'">
+      <md-hint align="end">dd/mm/aaaa</md-hint>
+    </md-input>
+    <button md-button type="submit" [disabled]="! form.valid">EDITAR</button>
+    <button md-button (click)="back($event)">CANCELAR</button>
+  </form>
+</md-card>

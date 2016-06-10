@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouteParams } from '@angular/router-deprecated'
+import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar'
+import { MD_ICON_DIRECTIVES, MdIconRegistry } from '@angular2-material/icon'
+import { MD_CARD_DIRECTIVES } from '@angular2-material/card'
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button'
 import { User } from '../user'
 import { UserService } from '../user.service'
@@ -9,8 +12,8 @@ import { UserService } from '../user.service'
   selector: 'app-show',
   templateUrl: 'show.component.html',
   styleUrls: ['show.component.css'],
-  directives: [MD_BUTTON_DIRECTIVES],
-  providers: [UserService]
+  directives: [MD_TOOLBAR_DIRECTIVES, MD_ICON_DIRECTIVES, MD_CARD_DIRECTIVES, MD_BUTTON_DIRECTIVES],
+  providers: [UserService, MdIconRegistry]
 })
 export class ShowComponent implements OnInit {
 
@@ -59,6 +62,10 @@ export class ShowComponent implements OnInit {
 
   delete(): void {
     this._router.navigate(['Delete', { id: this._routeParams.get('id') }])
+  }
+
+  back(): void {
+    this._router.navigate(['Index'])
   }
 
 }

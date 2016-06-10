@@ -1,5 +1,14 @@
-<md-card-content>
-  <p>Tem certeza que deseja excluir este usuário?</p>
-</md-card-content>
-<button md-button color="warn" (click)="delete()">EXCLUIR</button>
-<button md-button (click)="cancel()">CANCELAR</button>
+<md-toolbar color="primary">
+  <a class="control">
+    <md-icon (click)="back()">arrow_back</md-icon>
+  </a>
+  <span>Excluir</span>
+</md-toolbar>
+
+<md-card class="container">
+  <md-card-content>
+    <p>Tem certeza que deseja excluir este usuário?</p>
+  </md-card-content>
+  <button md-button color="warn" (click)="delete()">EXCLUIR</button>
+  <button md-button (click)="back()">CANCELAR</button>
+</md-card>
