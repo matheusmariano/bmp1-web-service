@@ -11,6 +11,7 @@ import { Validators as NbValidators } from '../shared/validators/validators'
 import { User } from '../user'
 import { UserService } from '../user.service'
 import { EmailService } from '../shared/services/email.service'
+import { DatePipe } from '../shared/pipes/date.pipe'
 
 @Component({
   moduleId: module.id,
@@ -18,7 +19,7 @@ import { EmailService } from '../shared/services/email.service'
   templateUrl: 'new.component.html',
   styleUrls: ['new.component.css'],
   directives: [MD_TOOLBAR_DIRECTIVES, MD_ICON_DIRECTIVES, MD_CARD_DIRECTIVES, MD_INPUT_DIRECTIVES, MD_RADIO_DIRECTIVES, MD_BUTTON_DIRECTIVES],
-  providers: [MdIconRegistry, MdRadioDispatcher, UserService, EmailService]
+  providers: [MdIconRegistry, MdRadioDispatcher, UserService, EmailService, DatePipe]
 })
 export class NewComponent implements OnInit {
 
@@ -30,7 +31,8 @@ export class NewComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _router: Router,
     private _service: UserService,
-    private _emailService: EmailService
+    private _emailService: EmailService,
+    private _datePipe: DatePipe
   ) {}
 
   ngOnInit() {
@@ -41,10 +43,7 @@ export class NewComponent implements OnInit {
   create() {
     let user = Object.assign({}, this.model)
 
-    if (user.birthday) {
-      let date = user.birthday.split('/')
-      user.birthday = `${date[2]}-${date[1]}-${date[0]}`
-    }
+    user.birthday = this._datePipe.transform(user.birthday, 'YYYY-MM-DD', 'DD/MM/YYYY')
 
     this._service
       .create(this.model)
