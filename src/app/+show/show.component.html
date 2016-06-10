@@ -11,7 +11,7 @@
     <md-card-content>
       <p><strong>Email:</strong> {{ user.email }}</p>
       <p><strong>Sexo:</strong> {{ user.sex | sex }}</p>
-      <p><strong>Nascimento:</strong> {{ user.birthday }}</p>
+      <p><strong>Nascimento:</strong> {{ (user.birthday | bmDate:'DD/MM/YYYY') || 'Não definido' }}</p>
     </md-card-content>
     <button md-button (click)="edit()">EDITAR</button>
     <button md-button color="warn" (click)="delete()">EXCLUIR</button>

@@ -7,6 +7,7 @@ import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button'
 import { User } from '../user'
 import { UserService } from '../user.service'
 import { SexPipe } from '../shared/pipes/sex.pipe'
+import { DatePipe } from '../shared/pipes/date.pipe'
 
 @Component({
   moduleId: module.id,
@@ -15,7 +16,7 @@ import { SexPipe } from '../shared/pipes/sex.pipe'
   styleUrls: ['show.component.css'],
   directives: [MD_TOOLBAR_DIRECTIVES, MD_ICON_DIRECTIVES, MD_CARD_DIRECTIVES, MD_BUTTON_DIRECTIVES],
   providers: [UserService, MdIconRegistry],
-  pipes: [SexPipe]
+  pipes: [SexPipe, DatePipe]
 })
 export class ShowComponent implements OnInit {
 
@@ -33,16 +34,6 @@ export class ShowComponent implements OnInit {
     this._service
       .get(endpoint)
       .subscribe((user: User) => {
-        // The date pipe isn't working with ISO dates yet.
-        // https://github.com/angular/angular/issues/3261
-        // Using the manual solution for a while.
-        if (user.birthday) {
-          let date = user.birthday.split('-')
-          user.birthday = `${date[2]}/${date[1]}/${date[0]}`
-        } else {
-          user.birthday = 'Não definido'
-        }
-
         this.user = user
       })
   }
